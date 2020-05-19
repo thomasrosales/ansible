@@ -13,13 +13,17 @@ function start_packaging() {
 
     echo -e "\nStarting Packaging."
 
+    mkdir only_files
+
     tar -cvzf inventories.tar.gz inventories/*
     tar -cvzf ansible.tar.gz /etc/ansible/*
 
-    mkdir only_files
-    
+    mv inventories.tar.gz only_files
+    mv ansible.tar.gz only_files   
+
     cp gce.pem only_files/
-    cp gce.py /
+    cp gce.py only_files/
+    cp gce.ini only_files/
     cp copiar_hosts.yml only_files
 
     tar -cvzf files.tar.gz only_files/*
@@ -30,8 +34,8 @@ function start_packaging() {
 
 function remove_packaging() {
     
-    INVENTORY_FILE_PATH=/root/inventories.tar.gz
-    ANSIBLE_FILE_PATH=/root/ansible.tar.gz
+    #INVENTORY_FILE_PATH=/root/inventories.tar.gz
+    #ANSIBLE_FILE_PATH=/root/ansible.tar.gz
     ONLY_FILES_PATH=/root/only_files
     FILES_FILE_PATH=/root/files.tar.gz
 
@@ -39,17 +43,6 @@ function remove_packaging() {
     read ANSWER
 
     if [[ "${ANSWER^^}" == "YES" ]]; then
-        if [ -f "$INVENTORY_FILE_PATH" ]; then
-            echo -e "$INVENTORY_FILE_PATH removing..."
-            rm "$INVENTORY_FILE_PATH"
-            echo -e "Done."
-        fi
-    
-        if [ -f "$ANSIBLE_FILE_PATH" ]; then
-            echo -e "$ANSIBLE_FILE_PATH removing..."
-            rm "$ANSIBLE_FILE_PATH"
-            echo -e "Done."
-        fi
     
         if [ -f "$FILES_FILE_PATH" ]; then
             echo -e "$FILES_FILE_PATH removing..."
