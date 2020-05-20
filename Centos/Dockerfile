@@ -17,4 +17,4 @@ RUN chmod 777 open-ssl.sh && chown root:root open-ssl.sh
 
 WORKDIR /root/
 
-ENTRYPOINT ["/open-ssl.sh"]
+CMD ["/bin/bash", "open-ssl.sh"]

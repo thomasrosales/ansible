@@ -3,23 +3,23 @@ services:
   master:
     image: thomasdocker92/ansible-centos-master
     networks:
-      ansiblenet:
-        ipv4_address: 192.168.0.1
+      ansible:
+        ipv4_address: 192.168.10.2
   ubuntu:
     image: thomasdocker92/ansible-ubuntu-client
     networks:
-      ansiblenet:
-        ipv4_address: 192.168.0.2
+      ansible:
+        ipv4_address: 192.168.10.3
   debian:
     image: thomasdocker92/ansible-debian-client
     networks:
-      ansiblenet:
-        ipv4_address: 192.168.0.3
+      ansible:
+        ipv4_address: 192.168.10.4
 
 networks:
-  ansiblenet:
+  ansible:
     driver: bridge
     ipam:
       driver: default
       config:
-        - subnet: "192.168.0.0/24"
+        - subnet: "192.168.10.0/24"
