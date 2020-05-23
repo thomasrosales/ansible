@@ -14,3 +14,4 @@ if [ -d "$OPENSSL_PATH" ]; then
 else
     echo "Erro: instaling OpenSSL"
 fi
+
