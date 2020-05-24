@@ -19,15 +19,15 @@ Por otro lado, en el siguiente repositorio en github: https://github.com/thomasr
 
 `docker-compose up`
 
-![Image of Powershell](https://github.com/thomasrosales/ansible/blob/master/images/pw1.jpg)
+![Image of docker-compose command with option up](https://github.com/thomasrosales/ansible/blob/master/images/pw1.jpg)
 
 `docker-compose ps`
 
-![Image of Powershell](https://github.com/thomasrosales/ansible/blob/master/images/pw2.jpg)
+![Image of docker-compose command with option ps](https://github.com/thomasrosales/ansible/blob/master/images/pw2.jpg)
 
-Utilizando el comando docker-compose up -f se levanta y se crean los contenedores, redes y volúmenes que se hayan especificados en el archivo docker-compose.yml. Conectarse al siguiente contenedor: ansible_master de la siguiente manera:
+Utilizando el comando docker-compose up -f se descargan (si es que no se ha realizado un pull previamente de las imágenes) y se crean los contenedores, redes y volúmenes que se hayan especificados en el archivo docker-compose.yml. Conectarse al siguiente contenedor: ansible_master de la siguiente manera:
 
-![Image of Powershell](https://github.com/thomasrosales/ansible/blob/master/images/pw3.jpg)
+![Image of docker command with option exec in iteractive mode and bash command](https://github.com/thomasrosales/ansible/blob/master/images/pw3.jpg)
 
 Generar clave pública y agregar clave a algún servidor local:
 
