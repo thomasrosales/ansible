@@ -25,12 +25,27 @@ Por otro lado, en el siguiente repositorio en github: https://github.com/thomasr
 
 ![Image of Powershell](https://github.com/thomasrosales/ansible/blob/master/images/pw2.jpg)
 
-Utilizando el comando docker-compose up -f se levanta y se crean los contenedores, redes y volúmenes que se hayan especificados en el archivo docker-compose.yml.
+Utilizando el comando docker-compose up -f se levanta y se crean los contenedores, redes y volúmenes que se hayan especificados en el archivo docker-compose.yml. Conectarse al siguiente contenedor: ansible_master de la siguiente manera:
+
+![Image of Powershell](https://github.com/thomasrosales/ansible/blob/master/images/pw3.jpg)
 
 Generar clave pública y agregar clave a algún servidor local:
 
-    ssh-keygen
-    cat /root/.ssh/id_rsa.pub
-    copiar: ssh-rsa AAAA [...] root@<hash>
+ ```
+ ssh-keygen
+ cat /root/.ssh/id_rsa.pub
+ copiar: ssh-rsa AAAA [...] root@<hash>
+ ```
+ 
+ Luego conectarse a algunos de los contenedores clientes, que ya están preparados para agregar la clave pública del master a cada uno de ellos. Para realizar esto se debe:
+ 
+ ```
+ cd .ssh/
+ nano autorized_keys
+ Pegar la clave pública copiada en el paso anterior.
+ ```
+ 
+ ![Image of Powershell](https://github.com/thomasrosales/ansible/blob/master/images/pw4.jpg)
+ 
 
 
