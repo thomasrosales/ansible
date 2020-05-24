@@ -5,7 +5,7 @@ Hola ! Me encuentro en la realización de un curso sobre Ansible para el manejo 
 
 Para este curso es necesario montar una mínima infraestructura local para que tenga sentido el uso de las herramientas que se proponen. Por tal motivo y con la ayuda de Docker, pude avanzar rápidamente en dicho objetivo. Utilizando Dockerfiles me dispuse a crear 3 imágenes que luego se convertirán en contenedores, las cuales, tienen como objetivo cumplir el rol de servidores clientes (2) y maestros (1). Comparto a continuación el repositorio de dichas imágenes para poder utilizarlas:
 
-```
+```console
 docker pull thomasdocker92/ansible-centos-master
 docker pull thomasdocker92/ansible-debian-client
 docker pull thomasdocker92/ansible-ubuntu-client
@@ -31,7 +31,7 @@ Utilizando el comando docker-compose up -f se descargan (si es que no se ha real
 
 Generar clave pública y agregar clave a algún servidor local:
 
- ```
+ ```console
  ssh-keygen
  cat /root/.ssh/id_rsa.pub
  copiar: ssh-rsa AAAA [...] root@<hash>
@@ -39,7 +39,7 @@ Generar clave pública y agregar clave a algún servidor local:
  
  Luego conectarse a algunos de los contenedores clientes, que ya están preparados para agregar la clave pública del master a cada uno de ellos. Para realizar esto se debe:
  
- ```
+ ```console
  cd .ssh/
  nano autorized_keys
  Pegar la clave pública copiada en el paso anterior.
@@ -49,7 +49,7 @@ Generar clave pública y agregar clave a algún servidor local:
  
  ![Image of Powershell](https://github.com/thomasrosales/ansible/blob/master/images/pw4.jpg)
  
- ```
+ ```console
  ssh debian@192.168.10.4
  ```
  
