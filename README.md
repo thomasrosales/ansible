@@ -45,7 +45,13 @@ Generar clave pública y agregar clave a algún servidor local:
  Pegar la clave pública copiada en el paso anterior.
  ```
  
+ **Nota: _una vez pegado el SHA se debe modificar la palabra root por el nombre del usuario del contenedor, por ejemplo: debian@... _**.
+ 
  ![Image of Powershell](https://github.com/thomasrosales/ansible/blob/master/images/pw4.jpg)
  
-
-
+ ```
+ ssh debian@192.168.10.4
+ ```
+ 
+ ![Image of Powershell](https://github.com/thomasrosales/ansible/blob/master/images/pw5.jpg)
+ 
