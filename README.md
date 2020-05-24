@@ -55,3 +55,7 @@ Generar clave pública y agregar clave a algún servidor local:
  
  ![Image of Powershell](https://github.com/thomasrosales/ansible/blob/master/images/pw5.jpg)
  
+ Esto asegura que **ansible** funcionará correctamente, por ejemplo:
+ 
+ ![Image of Powershel](https://github.com/thomasrosales/ansible/blob/master/images/pw6.jpg)
+ 
