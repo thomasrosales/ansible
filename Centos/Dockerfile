@@ -16,6 +16,8 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY script-test.sh /root/ 
 RUN chmod +x /root/script-test.sh && sed -i -e 's/\r$//' /root/script-test.sh
 
+RUN yum -y install iproute
+
 RUN yum -y install ansible 
 
 RUN pip install apache-libcloud
