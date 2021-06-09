@@ -15,22 +15,22 @@ RUN apt-get -y install sudo
 
 RUN mkdir /var/run/sshd
 
-RUN useradd ubuntu \
-    && passwd -d ubuntu \
-    && mkdir /home/ubuntu \
-    && chown ubuntu:ubuntu /home/ubuntu \
-    && addgroup ubuntu staff \
-    && chpasswd && addgroup ubuntu sudo \
+RUN useradd trosales \
+    && passwd -d trosales \
+    && mkdir /home/trosales \
+    && chown trosales:trosales /home/trosales \
+    && addgroup trosales staff \
+    && chpasswd && addgroup trosales sudo \
     && true
 
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-USER ubuntu
+USER trosales
 
-RUN mkdir /home/ubuntu/.ssh && \
-    touch /home/ubuntu/.ssh/authorized_keys && \
-    chmod 765 /home/ubuntu/.ssh && \
-    chmod 765 /home/ubuntu/.ssh/authorized_keys
+RUN mkdir /home/trosales/.ssh && \
+    touch /home/trosales/.ssh/authorized_keys && \
+    chmod 765 /home/trosales/.ssh && \
+    chmod 765 /home/trosales/.ssh/authorized_keys
 
 RUN sudo mkdir /root/.ssh && \
     sudo touch /root/.ssh/authorized_keys && \
@@ -38,8 +38,8 @@ RUN sudo mkdir /root/.ssh && \
     sudo chmod 600 /root/.ssh/authorized_keys
 
 COPY ssh-service.sh /
-RUN sudo chmod 777 ssh-service.sh && sudo chown ubuntu:ubuntu ssh-service.sh
+RUN sudo chmod 777 ssh-service.sh && sudo chown trosales:trosales ssh-service.sh
 
 ENTRYPOINT ["/ssh-service.sh"]
 
-WORKDIR /home/ubuntu
+WORKDIR /home/trosales
