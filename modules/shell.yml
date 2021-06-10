@@ -1,0 +1,8 @@
+---
+- name: shell module
+  hosts: localhost
+  tasks:
+    - script: /usr/local/src/uptime.sh
+    - shell: uptime >> uptime.log
+      args:
+        chdir: /tmp

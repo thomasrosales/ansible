@@ -1,0 +1,12 @@
+---
+- name: fail and pause module
+  hosts: localhost
+  vars:
+    - numero: 10
+  tasks:
+    - fail: msg="Numero no es 10"
+      when: numero != 10
+    - pause: prompt="Comprueba la app" seconds=2
+    - debug: msg="Hola despues de pausa"
+...
+

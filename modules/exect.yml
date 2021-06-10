@@ -1,0 +1,12 @@
+---
+- name: expect module
+  hosts: localhost
+  tasks:
+   - name: Instalar pexpect
+     yum: name=pexpect state=latest
+   - name: cambiar password
+     expect:
+        command: passwd trosales
+        responses: 
+         (?i)password: "Passw0rd$"
+...

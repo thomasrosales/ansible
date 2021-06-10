@@ -1,0 +1,6 @@
+---
+- name: raw y script module
+  hosts: localhost
+  tasks:
+    - script: /usr/local/src/uptime.sh
+...

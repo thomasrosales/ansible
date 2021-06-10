@@ -1,0 +1,18 @@
+---
+- name: assert module
+  hosts: localhost
+  vars:
+    numero: 10
+  tasks:
+   - assert:
+       msg: "Numero tiene que estar entre 0 y 100"
+       that:
+         - ansible_os_family != "RedHAt"
+         - numero <= 100
+         - numero > 0
+
+   - assert:
+       msg: "Numero tiene que ser mayor a 100"
+       that:
+         - numero > 100
+         

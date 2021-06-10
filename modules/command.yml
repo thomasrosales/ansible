@@ -1,0 +1,11 @@
+---
+- name: command module
+  hosts: localhost
+  tasks:
+    - name: Primer test
+      command: uname -a creates=/tmp/noejecutar
+      register: output
+
+    - debug: var=output
+      when: output
+...
