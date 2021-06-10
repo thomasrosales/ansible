@@ -1,0 +1,10 @@
+---
+- name: Primer play
+  hosts: debian1
+  remote_user: trosales
+  become: True
+  tasks:
+    - name: Instalar vim
+      apt: name=vim state=latest
+    - include: instalar_apache2.yml
+...

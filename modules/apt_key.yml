@@ -1,0 +1,10 @@
+---
+- name: apt_key module
+  hosts: debian1
+  remote_user: trosales
+  become: True
+  tasks:
+    - name: Agregar clave apt
+      apt_key: url="https://ftp-master.debian.org/keys/archive-key-6.0.asc" state=present
+
+...

@@ -1,0 +1,9 @@
+---
+- name: yum module
+  hosts: localhost
+  tasks:
+    - name: Instalar httpd
+      yum: name=httpd state=latest
+    - name: Actualizar paquetes
+      yum: name="*" state=latest
+...

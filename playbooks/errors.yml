@@ -1,0 +1,17 @@
+---
+- name: Playbook para la clase de errores
+  hosts: localhost
+  tasks:
+    - name: Ejecutar commando cat
+      command: cat /etc/hosts2
+      register: output
+      ignore_errors: True
+
+    - name: Visualizar stdout
+      debug: var=output.stdout_lines
+      when: not output.failed
+
+    - name: Visualizar stderr
+      debug: var=output.stderr
+      when: output.failed
+...

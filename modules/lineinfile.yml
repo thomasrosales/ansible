@@ -1,0 +1,13 @@
+---
+- name: Unarchive module
+  hosts: localhost
+  tasks:
+    - name: Deshabilitar SElinux
+      lineinfile: path=/etc/selinux/config regexp="^SELINUX=" line="SELINUX=disabled"
+      ignore_errors: True
+    - name: Eliminar grupo desde sudoers
+      lineinfile: dest=/etc/sudoers state=absent regexp="^%wheel"
+      failed_when: True
+      ignore_errors: True
+      
+...

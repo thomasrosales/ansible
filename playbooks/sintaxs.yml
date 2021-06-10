@@ -1,0 +1,30 @@
+---
+- name: Crear fichero usando variables
+  hosts: localhost
+  connection: local
+  vars:
+    - miip: "1.2.3.4"
+    - milista: ["apache2", "mariadb", "php5"]
+    - milistafull:
+        - apache2
+        - mariadb
+        - php5
+    - midict: {web: "apache2", bd: "mariadb", script: "php5"}
+    - midictfull:
+       - web: apache2
+       - bd: mariadb
+       - script: php5
+    - mitext: | 
+          primer linea
+          seundao linea
+          tercera linea
+    - mitextfull: >
+          iniciia linea
+          conitnuacion linea
+          final linea
+  tasks:
+    - debug: var=miip
+    - debug: var=mitextfull
+    - debug: var=mitext
+    - debug: var=midictfull
+    - debug: var=midict

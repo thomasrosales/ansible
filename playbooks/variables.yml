@@ -1,0 +1,9 @@
+---
+- name: Crear fichero usando variables
+  hosts: localhost
+  connection: local
+  vars: 
+    - miip: "1.2.3.4"
+  tasks:
+    - name: Crear fichero hosts
+      template: src=hosts.j2 dest=/tmp/hosts

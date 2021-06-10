@@ -1,0 +1,9 @@
+---
+- name: Fetch module
+  hosts: debian1
+  become: True
+  tasks:
+    - name: Copiar config de supervisor
+      fetch: src=fileto.txt dest=/tmp/fileto.txt flat=yes
+
+...

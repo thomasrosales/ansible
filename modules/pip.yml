@@ -1,0 +1,8 @@
+---
+- name: Pip module
+  hosts: localhost
+  tasks:
+    - name: Instalar requests
+      pip: name=requests state=latest
+
+...

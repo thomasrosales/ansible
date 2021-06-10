@@ -1,0 +1,13 @@
+---
+- name: apt_repository module
+  hosts: debian1
+  remote_user: trosales
+  become: True
+  tasks:
+    - name: Instalar google chrome repo
+      apt_repository:
+        repo: "deb http://dl.google.com/linux/chrome/deb/ stable main"
+        state: present
+        filename: "file-name"
+
+...

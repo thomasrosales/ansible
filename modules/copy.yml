@@ -1,0 +1,8 @@
+---
+- name: Copy module
+  hosts: debian1
+  become: True
+  tasks: 
+    - name: Crear fichere con contendio especifico
+      copy: content="Esto es un ejemplo" dest=/tmp/test
+...

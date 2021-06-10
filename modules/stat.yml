@@ -1,0 +1,21 @@
+---
+- name: Stat module
+  hosts: localhost
+  tasks:
+    - name: Utitlizano stat
+      stat: path=/etc/services
+      register: datos
+
+    - name: Utitilizando stat para directorios
+      stat: path=/etc/
+      register: datosf
+
+    - name: Mostrando fichero
+      debug: var=datos
+      when: datos.stat.isdir == False
+
+    - name: Mostrando directorio
+      debug: var=datosf
+      when: datos.stat.isdir == False
+    
+...

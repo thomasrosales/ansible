@@ -1,0 +1,8 @@
+---
+- name: File module
+  hosts: debian1
+  become: True
+  tasks: 
+    - name: Cambiar propiedades
+      file: path=/tmp/test backup=yes mode="77"
+...

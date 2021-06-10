@@ -1,0 +1,8 @@
+---
+- name: Easy Install module
+  hosts: localhost
+  become: True
+  tasks:
+    - name: Instalar pip
+      easy_install: name=pip state=latest
+...

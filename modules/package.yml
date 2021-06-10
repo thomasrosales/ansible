@@ -1,0 +1,8 @@
+---
+- name: package module
+  hosts: localhost
+  tasks:
+    - name: Instalar ntpdate
+      package: name=ntpdate state=latest
+
+...

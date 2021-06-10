@@ -1,0 +1,7 @@
+---
+- name: Instalar y configurar apache2
+  hosts: debian1:ubuntu1
+  become: true
+  roles:
+    - apache2
+...

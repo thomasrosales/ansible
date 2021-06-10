@@ -1,0 +1,10 @@
+---
+- name: Playbook para la clase de register
+  hosts: localhost
+  tasks:
+    - name: Ejecutar uptime
+      command: uptime
+      register: output
+    - name: Show output
+      debug: var=output.stdout
+...

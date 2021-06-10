@@ -1,0 +1,16 @@
+---
+- name: Trabajar con modulos packing
+  hosts: localhost
+  tasks:
+    - name: Instalar gcc
+      yum: name=gcc state=latest
+      failed_when: True
+      ignore_errors: True
+      #debug: var="Por si falta libreiras"
+    
+    - name: Instalar cpanm
+      yum: name=perl-App-cpanminus state=latest
+    
+    - name: Instalar DBI
+      cpanm: name=DBI
+...
