@@ -1,0 +1,7 @@
+---
+- name: set_facts module
+  hosts: localhost
+  tasks:
+    - set_fact: nombre="{{ansible_hostname | upper}}"
+    - debug: var=nombre
+...

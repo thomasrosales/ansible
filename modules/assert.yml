@@ -1,9 +1,10 @@
 ---
 - name: assert module
   hosts: localhost
-  vars:
-    numero: 10
+  #vars:
+  #  numero: 10
   tasks:
+   - include_vars: variables.yml
    - assert:
        msg: "Numero tiene que estar entre 0 y 100"
        that:

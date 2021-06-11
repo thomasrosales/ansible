@@ -1,0 +1,53 @@
+---
+- name: hipchat module
+  connection: localhost
+  hosts: localhost
+  vars:
+    - notificar: "mail"
+  tasks:
+    - hipchat: 
+        api: https://api.hipchat.com/v2/
+        token: "3aiLH3ncDtQtZpLNMartJEyJGkLlnpMLvnYtQwLuh"
+        room: Oforte
+        msg: "Tarea finalizada {{ ansible_fqdn }}"
+      when: notificar == "hipchat"
+
+    - mail:
+        subject: "Tarea finalizada"
+        body: "tarea finalizada {{ansible_fqdn}}"
+      delegate_to: localhost
+      when: notificar == "mail"
+    
+    - pip: name=pushbullet.py
+      when: notificar == "pushbullet"
+
+    - pushbullet:
+        api_key: "asdasd" 
+        device: "iphone"
+        title: "Notificaccion Ansible"
+      when: notificar == "pushbullet"     
+    
+    - pushover:
+        app_token= "asd"
+        user_key = ""
+        msg= "Notificacion Ansible"
+      when: notificar == "pushover"
+
+    - name: Enviar notificacion a Rocjert Chat
+      rocketchat:
+        token: "asdads"
+        domain: cloudforte.net:3000
+        msg: "Notificacion ansible {{ inventory_hostname }}"
+        channel: "#oforte"
+        protocol: http
+      delegate_to: localhost
+      when: notificar == "rocketchat"
+    
+    - name: Enviar notificacion slack
+      slack:
+        token: "asda"
+        channel: "#oforte"
+        msg: "{{ inventory_hostname }} completed"
+      delegate_to: localhost
+      when: notificar == "slack"
+...

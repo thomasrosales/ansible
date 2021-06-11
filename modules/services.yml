@@ -1,0 +1,29 @@
+---
+- name: service module
+  hosts: ubuntu
+  tasks:
+    - name: Inicia y habilitar servicios
+    - service:
+        name: apache2
+        state: started
+        enabled: True
+      when: "{{ansible_distribution}}" == "Debian"
+    - setup: gather_subset=all
+    
+    - sysctl:
+        name: net.ipv4.ip_forward
+        value: 1
+        state: present
+        sysctl_set: yes
+        reload: yes
+      when: False
+
+    - user:
+        name: jboss
+        uid=185
+        home:/tmp
+        shell:/bin/false
+        state: present
+        
+
+...

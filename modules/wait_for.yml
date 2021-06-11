@@ -1,0 +1,11 @@
+---
+- name: wait_for module
+  hosts: localhost
+  tasks:
+    #- name: Wait to the server
+    #  wait_for: delay=2 port=8080
+    - name: esperar hasta que ficher exista
+      wait_for: path=/tmp/exista
+    - name: Esperar hasta que fichero no exista
+      wait_for: path=/tmp/exista state=absent
+...

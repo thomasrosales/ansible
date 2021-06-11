@@ -1,0 +1,57 @@
+---
+- name: modulos de sistema
+  hosts: ubuntu
+  vars:
+    - exists: False
+    - partition: False
+    - firewall: False
+  tasks:
+    - name: Usar java 9
+      alternatives: name=java path=/usr/lib/jvm/java-9-openjdk-amd64/bin/java
+      when: exists
+
+    - name: Auorizar claves publicas
+      authorizad_key:
+        user: trosales
+        state: present
+        key: "=clave..."
+      when: exists
+    
+    - name: Tarea asyncronica
+      cron:
+        name: "crear backuo"
+        job: "/root/scripts/backup.sh"
+        minute: 0
+        hour: 2
+        cron_file: crear_backup
+        user: root
+      when: exists
+
+    - name: Crear sistema de ficher
+      filesystem:
+        dev: /dev/sdc1
+        fstype: xfs
+      when: exists && partition
+
+    - name: habilitar http/https firewalld
+      firewalld:
+        state: enabled
+        services: "{{item}}"
+        permanent: True
+      with_items:
+        - "http" 
+        - "https"
+      delegate_to: localhost
+      when: firewall
+    
+   - name: Instalar JBOSS
+     group: name=jboss state=present gid=185
+
+   - debug: var=ansible_hostname
+   - hostname: name=ubuntu.forte.net
+   - ping:
+   - setup: 
+   - debug: var=ansible_hostname
+   - timezone: name="Europe/Madrid"
+
+...
