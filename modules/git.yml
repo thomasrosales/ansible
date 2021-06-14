@@ -1,0 +1,13 @@
+---
+- name: git module
+  hosts: localhost
+  tasks:
+    - name: obtener ejemplos
+      git: repo=https://github.com/ansible/ansible-examples.git dest=/root/ansible-examples/
+     
+    - name: configurar editior a vim
+      git_config:
+        name: core.editor
+        value: vim
+        scope: global
+...

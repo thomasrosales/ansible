@@ -1,0 +1,7 @@
+---
+- name: setup module
+  hosts: localhost
+  gather_facts: False # espera que el servidor este disponible para conectarse
+  tasks:
+    - setup:
+...

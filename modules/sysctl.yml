@@ -1,0 +1,6 @@
+---
+- name: sysctl module
+  hosts: localhost
+  tasks:
+    - name: permititir redirigir ttrafico
+      sysctl: name=net.ipv4.ip_forward value=1 sysctl_set=yes state=present reload=yes

@@ -1,0 +1,12 @@
+---
+- name user module
+  hosts: localhost
+  tasks:
+    - name: crear usuario
+      user:
+        name: jboss
+        uid: 185
+        shell: /bin/false
+        system:yes
+        home: /opt/jboss
+...

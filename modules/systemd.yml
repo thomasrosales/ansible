@@ -1,0 +1,11 @@
+---
+- name systemd module
+  hosts: localhost
+  tasks:
+   - name: habilitar servicio y recargar systemd
+     systemd: 
+       name: apache2
+       enabled: yes
+       state: started
+       deamon_reload: yes
+...
